@@ -67,7 +67,7 @@ function removerConvenio(id_convenio) {
 }
 
 function removerConsulta(id_consulta) {
-  const sql = "DELETE FROM consulta WHERE idConsulta = ?";
+  const sql = "DELETE FROM consulta WHERE id_consulta = ?";
   connection.query(sql, id_consulta, (error, results, fields) => {
     if (error) {
       console.error("Erro ao remover consulta:", error);
@@ -87,6 +87,17 @@ function removerReceita(id_receita) {
     console.log("Receita removida com sucesso.");
   });
 }
+
+function removerDoenca(id_doenca) {
+  const sql = "DELETE FROM doenca WHERE id_doenca = ?";
+  connection.query(sql, id_doenca, (error, results, fields) => {
+    if (error) {
+      console.error("Erro ao remover doença:", error);
+      return;
+    }
+    console.log("Doença removida com sucesso.");
+  });
+}
 module.exports = {
     removerPessoa,
     removerMedico,
@@ -95,6 +106,7 @@ module.exports = {
     removerEndereco,
     removerConvenio,
     removerConsulta,
-    removerReceita
+    removerReceita,
+    removerDoenca
   };
 connection.end();

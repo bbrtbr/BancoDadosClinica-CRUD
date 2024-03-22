@@ -37,13 +37,17 @@ function editarPaciente(id_paciente, novosDados) {
 
 function editarEspecialidade(id_especialidade, novosDados) {
   const sql = "UPDATE especialidade SET ? WHERE id_especialidade = ?";
-  connection.query(sql, [novosDados, id_especialidade], (error, results, fields) => {
-    if (error) {
-      console.error("Erro ao editar especialidade:", error);
-      return;
+  connection.query(
+    sql,
+    [novosDados, id_especialidade],
+    (error, results, fields) => {
+      if (error) {
+        console.error("Erro ao editar especialidade:", error);
+        return;
+      }
+      console.log("Especialidade editada com sucesso.");
     }
-    console.log("Especialidade editada com sucesso.");
-  });
+  );
 }
 
 function editarEndereco(id_endereco, novosDados) {
@@ -69,7 +73,7 @@ function editarConvenio(id_convenio, novosDados) {
 }
 
 function editarConsulta(id_consulta, novosDados) {
-  const sql = "UPDATE consulta SET ? WHERE idConsulta = ?";
+  const sql = "UPDATE consulta SET ? WHERE id_consulta = ?";
   connection.query(sql, [novosDados, id_consulta], (error, results, fields) => {
     if (error) {
       console.error("Erro ao editar consulta:", error);
@@ -89,16 +93,26 @@ function editarReceita(id_receita, novosDados) {
     console.log("Receita editada com sucesso.");
   });
 }
+function editarDoença(id_doenca, novosDados) {
+  const sql = "UPDATE doenca SET ? WHERE id_doenca = ?";
+  connection.query(sql, [novosDados, id_doenca], (error, results, fields) => {
+    if (error) {
+      console.error("Erro ao editar doença:", error);
+      return;
+    }
+    console.log("Doença editada com sucesso.");
+  });
+}
 
 module.exports = {
-    editarPessoa,
-    editarMedico,
-    editarPaciente,
-    editarEspecialidade,
-    editarEndereco,
-    editarConvenio,
-    editarConsulta,
-    editarReceita
+  editarPessoa,
+  editarMedico,
+  editarPaciente,
+  editarEspecialidade,
+  editarEndereco,
+  editarConvenio,
+  editarConsulta,
+  editarReceita,
 };
 
 connection.end();

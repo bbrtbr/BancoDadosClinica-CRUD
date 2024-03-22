@@ -1,5 +1,6 @@
 -- Comandos para criar o banco de dados
 create database clinica;
+
 use clinica;
 
 CREATE TABLE pessoa (
@@ -25,6 +26,12 @@ CREATE TABLE telefone (
     numero VARCHAR(20),
     operadora VARCHAR(30),
     FOREIGN KEY (id_pessoa) REFERENCES pessoa(cpf)
+);
+
+CREATE TABLE convenio (
+    id_convenio INT AUTO_INCREMENT PRIMARY KEY,
+    nome_convenio VARCHAR(100),
+    cnpj_convenio VARCHAR(14)
 );
 
 CREATE TABLE paciente (
@@ -53,7 +60,7 @@ CREATE TABLE especialidade (
 );
 
 CREATE TABLE consulta (
-    idConsulta INT AUTO_INCREMENT PRIMARY KEY,
+    id_consulta INT AUTO_INCREMENT PRIMARY KEY,
     id_medico INT,
     id_paciente INT,
     data_consulta DATE,
@@ -65,14 +72,23 @@ CREATE TABLE consulta (
 
 CREATE TABLE receita (
     idReceita INT AUTO_INCREMENT PRIMARY KEY,
-    idConsulta INT,
+    id_consulta INT,
     medicamento VARCHAR(100),
     instrucao_uso TEXT,
-    FOREIGN KEY (idConsulta) REFERENCES consulta(idConsulta)
+    FOREIGN KEY (id_consulta) REFERENCES consulta(id_consulta)
 );
 
-CREATE TABLE convenio (
-    id_convenio INT AUTO_INCREMENT PRIMARY KEY,
-    nome_convenio VARCHAR(100),
-    cnpj_convenio VARCHAR(14)
+CREATE TABLE doenca(
+    id_doenca INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    descricao TEXT,
+    tratamento TEXT
+);
+
+CREATE TABLE doencaconsulta(
+    id_doenca_consulta INT AUTO_INCREMENT PRIMARY KEY,
+    id_doenca INT,
+    id_consulta INT,
+    FOREIGN KEY (id_consulta) REFERENCES consulta(id_consulta),
+    FOREIGN KEY (id_doenca) REFERENCES doenca(id_doenca)
 );
