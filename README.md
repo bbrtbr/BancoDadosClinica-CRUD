@@ -2,7 +2,7 @@
 
 ![clinica drawio](https://github.com/bbrtbr/BancoDadosClinica-CRUD/assets/109661421/f800f356-835c-4313-ba3c-8bcc8c3fd717)
 
-''java
+```java
 Requisitos: Diagrama Entidade Relacionamento 
 Pelo menos 10 entidades
 Especificação do banco de dados (detalhado, com justificativas para relacionamentos)
@@ -20,4 +20,4 @@ Ler dados (select)
 Atualizar dados (update)
 Apagar dados (delete)
 Deve haver pelo menos uma função com join e uma com subconsulta aninhada.
-'
+```
