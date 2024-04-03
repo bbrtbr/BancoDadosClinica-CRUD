@@ -92,3 +92,11 @@ CREATE TABLE doencaconsulta(
     FOREIGN KEY (id_consulta) REFERENCES consulta(id_consulta),
     FOREIGN KEY (id_doenca) REFERENCES doenca(id_doenca)
 );
+
+CREATE TABLE telefonepessoa(
+    id_telefone_pessoa INT AUTO_INCREMENT PRIMARY KEY,
+    id_telefone INT,
+    cpf VARCHAR,
+    FOREIGN KEY (id_telefone) REFERENCES telefone(idTelefone),
+    FOREIGN KEY (cpf) REFERENCES pessosa(cpf)
+)
